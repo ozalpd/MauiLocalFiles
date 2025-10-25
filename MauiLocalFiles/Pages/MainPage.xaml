@@ -3,24 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiLocalFiles.Pages.MainPage">
 
-    <Grid ColumnDefinitions="120,*,*,*" RowDefinitions="Auto,Auto,Auto,Auto"
+    <Grid ColumnDefinitions="120,*,48,*" RowDefinitions="Auto,Auto,Auto,Auto"
           Padding="10,10" ColumnSpacing="5" RowSpacing="5">
 
         <!-- Read File Section -->
         <Button x:Name="ReadFileBtn" Grid.Row="0"
                 Clicked="OnReadFileClicked"
                 Text="Read File" HorizontalOptions="Fill" />
-        <Entry x:Name="ReadFilePathEntry" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-               Placeholder="Enter file path"
-               Text="C:\test.txt" />
+        <Entry x:Name="ReadFilePathEntry" Grid.Row="0" Grid.Column="1"
+               Placeholder="Enter read file path"/>
+
+        <Button x:Name="GetReadFilePathBtn" Grid.Row="0" Grid.Column="2"
+                Clicked="OnGetReadFilePathClicked"
+                Text="..." ToolTipProperties.Text="Choose Read File" HorizontalOptions="Fill" />
 
         <!-- Write File Section -->
         <Button x:Name="WriteFileBtn" Grid.Row="1"
                 Clicked="OnWriteFileClicked"
                 Text="Write File"
                 HorizontalOptions="Fill" />
-        <Entry x:Name="WriteFilePathEntry" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
-               Placeholder="Enter file path" Text="C:\output.txt" />
+        <Entry x:Name="WriteFilePathEntry" Grid.Row="1" Grid.Column="1"
+               Placeholder="Enter write file path"/>
+
+        <Button x:Name="GetWriteFilePathBtn" Grid.Row="1" Grid.Column="2"
+                Clicked="OnGetWriteFilePathClicked"
+                Text="..." ToolTipProperties.Text="Choose Write File"
+                HorizontalOptions="Fill" />
+
         <Editor x:Name="WriteFileContentEditor" Grid.Row="2" Grid.ColumnSpan="3"
                 Placeholder="Enter file content"
                 HeightRequest="330"

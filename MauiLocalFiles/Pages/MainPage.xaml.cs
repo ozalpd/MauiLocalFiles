@@ -1,4 +1,6 @@
-﻿namespace MauiLocalFiles.Pages
+﻿using System.Runtime.InteropServices;
+
+namespace MauiLocalFiles.Pages
 {
     public partial class MainPage : ContentPage
     {
@@ -74,6 +76,49 @@
         private void OnClearClicked(object? sender, EventArgs e)
         {
             OutputEditor.Text = "Ready...";
+        }
+
+        private async void OnGetReadFilePathClicked(object? sender, EventArgs e)
+        {
+            try
+            {
+                var result = await FilePicker.Default.PickAsync(new PickOptions
+                {
+                    PickerTitle = "Select a file to read"
+                });
+
+                if (result != null)
+                {
+                    ReadFilePathEntry.Text = result.FullPath ?? result.FileName;
+                }
+            }
+            catch (Exception ex)
+            {
+                OutputEditor.Text = $"Error opening file picker: {ex.Message}";
+            }
+
+        }
+
+        private async void OnGetWriteFilePathClicked(object? sender, EventArgs e)
+        {
+            try
+            {
+                // Try letting the user pick an existing file to overwrite
+                var result = await FilePicker.Default.PickAsync(new PickOptions
+                {
+                    PickerTitle = "Select a file to save (pick existing to overwrite)"
+                });
+
+                if (result != null)
+                {
+                    WriteFilePathEntry.Text = result.FullPath ?? result.FileName;
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                OutputEditor.Text = $"Error selecting save path: {ex.Message}";
+            }
         }
     }
 }
