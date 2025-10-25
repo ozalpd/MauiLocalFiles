@@ -1,0 +1,7 @@
+﻿{
+  "settings": {
+    "dbFilePath": "./AppSQLite.db3",
+    "language": "en-US",
+    "theme": "light"
+  }
+}
