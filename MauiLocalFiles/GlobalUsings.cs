@@ -1,1 +1,2 @@
-﻿global using MauiLocalFiles.Pages;
+﻿global using CommunityToolkit.Maui;
+global using MauiLocalFiles.Pages;
